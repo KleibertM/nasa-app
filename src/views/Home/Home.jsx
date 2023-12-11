@@ -25,7 +25,7 @@ const Home = ()=> {
             try {
                 const date = new Date();
                 const todaysDate = format(date, 'yyyy-MM-dd');
-                const fiveDaysAgo = format(sub(date, {days: 5}), 'yyyy-MM-dd')
+                const fiveDaysAgo = format(sub(date, {days: 15}), 'yyyy-MM-dd')
                 
                 const lastFiveDaysResponse = await fecthApi(`&start_date=${fiveDaysAgo}&end_date=${todaysDate}`)
 
@@ -41,9 +41,9 @@ const Home = ()=> {
 
     return (
         <View style={styles.container} >
-            <Header/>
             <TodayImg todayImg={todayImg} />
             <LastFiveDayImageComp lastFiveDayImage={lastFiveDayImage}  />
+            <Header/>
         </View>
     )
 }
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 10,
+        backgroundColor: '#34495E'
     }
 })
 

@@ -1,11 +1,16 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TextInput } from "react-native";
 
 const Header = () => {
     return (
         <View style={styles.container}>
             <View style={styles.textConatiner} >
                 <Text style={styles.title} >Explore</Text>
+                <TextInput
+                    style={styles.searchInput}
+                    placeholder="Search..."
+                    placeholderTextColor="#EAECEE"
+                />
             </View>
             <View style={styles.iconContainer} >
                 <Image style={styles.image} source={require('../../../assets/iconNasa.png')} />
@@ -21,24 +26,36 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         backgroundColor: "#2C3E50",
         borderRadius: 15,
-        marginTop: 30,
+        marginBottom: 5,
         paddingHorizontal: 10,
     },
-    textConatiner:{
+    textConatiner: {
         flex: 1,
         alignItems: "flex-start",
+        flexDirection: 'row',
+        gap: 10
     },
     title: {
         fontSize: 20,
-        color: "#fff",
+        color: "#EAECEE",
     },
-    iconContainer:{
+    searchInput:{
+        fontSize: 16,
+        backgroundColor: "#34495E",
+        width: '80%',
+        height: 30,
+        borderRadius: 10,
+        alignSelf: 'center',
+        paddingHorizontal: 5,
+        color: '#EAECEE'
+    },
+    iconContainer: {
         flex: 1,
         alignItems: "flex-end",
     },
     image: {
-        width: 80,
-        height: 80,
+        width: 60,
+        height: 60,
     }
 })
 

@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, Image, StyleSheet,Text, View } from "react-native";
+import {useNavigation} from '@react-navigation/native'
 
 const TodayImg = ({ todayImg }) => {
-    if (!todayImg || !todayImg.date || !todayImg.title || !todayImg.hdurl || !todayImg.explanation || !todayImg.url) {
+    if (!todayImg || !todayImg.date || !todayImg.title || !todayImg.explanation || !todayImg.url) {
         // Puedes manejar el caso en que todayImg o alguna propiedad específica no exista
         return (
             <View>
@@ -10,8 +11,13 @@ const TodayImg = ({ todayImg }) => {
             </View>
         );
     }
+    const { date, title, url, explanation } = todayImg;
 
-    const { date, title, url } = todayImg;
+    const {navigate} = useNavigation();
+
+    const handleViewPress =()=>{
+        navigate('Detail', {title, date, url, explanation})
+    }
     return (
         <View style={styles.container} >
             <View style={styles.imageContainer}>
@@ -20,7 +26,7 @@ const TodayImg = ({ todayImg }) => {
             <Text style={styles.title} >{title}</Text>
             <Text style={styles.date} >{date}</Text>
             <View style={styles.btn} >
-                <Button title="View" />
+                <Button title="View" onPress={handleViewPress} />
             </View>
         </View>
     )

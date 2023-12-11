@@ -2,14 +2,22 @@ import React from "react"
 import { Image } from "react-native";
 import { Button, StyleSheet } from "react-native";
 import { Text, View } from "react-native"
+import {useNavigation} from '@react-navigation/native'
 
-const PostImage = ({title, date, url }) => {
+
+const PostImage = ({title, date, url, explanation }) => {
     if (!title || !date || !url) {
         return (
             <View>
                 <Text>No se pudo cargar laaaa.</Text>
             </View>
         );
+    }
+
+    const {navigate} = useNavigation();
+
+    const handleViewPress =()=>{
+        navigate('Detail', {title, date, url, explanation})
     }
     return (
         <View style={styles.container}>
@@ -23,7 +31,7 @@ const PostImage = ({title, date, url }) => {
                 </View>
             </View>
             <View style={styles.btn} >
-                <Button title="View"/>
+                <Button title="View" onPress={handleViewPress}/>
             </View>
         </View>
     )
@@ -31,7 +39,7 @@ const PostImage = ({title, date, url }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#5D6D7E',
+        backgroundColor: '#2C3E50',
         borderRadius: 10,
         paddingVertical: 4, 
         paddingHorizontal: 8,
@@ -47,12 +55,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        color: '#fff',
+        color: '#EAECEE',
         fontWeight: "500",
         marginVertical: 4
     },
     date:{
-        color: "#fff",
+        color: "#EAECEE",
         fontSize: 12,
         marginVertical: 4
     },
